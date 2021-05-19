@@ -1,16 +1,8 @@
-def climbStairs(n):
-    if n == 1 or n == 2:
-        return n
-
-    prevPrev = 1
-    prev = 2
-    current = 0
-    
-    for step in range(3, n+1):
-        # Calculate Number of Ways to Reach Current Step
-        current = prevPrev + prev
-        # Update Pointers for Next Step
-        prevPrev = prev
-        prev = current
-        
-    return current
+def climbStairs(self, n: int) -> int:
+    if n<=2: return n
+    dp = [0]*(n+1)
+    dp[1] = 1
+    dp[2] = 2
+    for i in range(3,n+1):
+        dp[i] = dp[i-1]+dp[i-2]
+    return dp[n]
