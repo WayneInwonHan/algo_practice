@@ -1,12 +1,15 @@
-class Solution:
-    def myPow(self, x: float, n: int) -> float:
-        if n == -1:
-            return 1 / x
-        elif n == 1:
-            return x
-        elif n == 0:
-            return 1
-        if n%2 == 0:
-            return self.myPow(x*x, n//2)
-        else:
-            return self.myPow(x*x, n//2) * x
+var myPow = function(x, n) {
+    if (n === 0) return 1;
+    if (n > 0) return pow(x, n);
+    if (n < 0) return 1 / pow(x, -n);
+};
+  
+var pow = function (x, n) {
+    if (n === 1) return x;
+    var num = pow(x, Math.floor(n / 2));
+    if (n % 2 === 0) {
+        return num * num;
+    } else {
+        return x * num * num;
+    }
+};
